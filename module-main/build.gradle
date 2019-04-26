@@ -1,0 +1,19 @@
+apply from: "../module.gradle"
+
+android {
+    defaultConfig {
+        //如果是独立模块，则使用当前组件的包名
+        if (isBuildModule.toBoolean()) {
+            applicationId "com.andy.module.main"
+        }
+    }
+
+    // 统一资源前缀，规范资源引用
+    resourcePrefix "main_"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':library-common')
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+}
