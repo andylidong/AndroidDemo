@@ -12,14 +12,14 @@ import com.andy.library.common.router.RouterActivityPath;
 
 
 /**
- * @Description:    TODO
- * @Author:         lidong
- * @CreateDate:     2019-04-28 12:01
- * @UpdateUser:     lidong
- * @UpdateDate:     2019-04-28 12:01
- * @UpdateRemark:   TODO
- * @Version:        1.0
-**/
+ * @Description: TODO
+ * @Author: lidong
+ * @CreateDate: 2019-04-28 12:01
+ * @UpdateUser: lidong
+ * @UpdateDate: 2019-04-28 12:01
+ * @UpdateRemark: TODO
+ * @Version: 1.0
+ **/
 public class AppActivity extends AppCompatActivity {
 
 
@@ -42,7 +42,7 @@ public class AppActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation(RouterActivityPath.Login.PAGER_LOGIN);
+                navigation(RouterActivityPath.Login.PAGER_LOGIN, null);
             }
         });
 
@@ -50,13 +50,15 @@ public class AppActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navigation(RouterActivityPath.Main.PAGER_MAIN);
+                Bundle bundle = new Bundle();
+                bundle.putString("Home", "This is a demo for Home!!!!");
+                navigation(RouterActivityPath.Main.PAGER_MAIN, bundle);
             }
         });
     }
 
 
-    private void navigation(String path) {
-        ARouter.getInstance().build(path).navigation();
+    private void navigation(String path, Bundle bundle) {
+        ARouter.getInstance().build(path).with(bundle).navigation();
     }
 }
