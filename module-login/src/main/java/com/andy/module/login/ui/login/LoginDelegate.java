@@ -3,7 +3,6 @@ package com.andy.module.login.ui.login;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,6 +15,7 @@ import com.andy.module.login.data.login.LoginService;
 import com.kymjs.themvp.view.AppDelegate;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import rx.Subscriber;
 
 /**
  * @Description: TODO
@@ -67,15 +67,14 @@ public class LoginDelegate extends AppDelegate {
             return;
         }
         showProgress(true);
-        loginService.login(login).subscribe(new Observer() {
-
-
+        loginService.login(login).subscribe(new Observer<Login>() {
             @Override
             public void onSubscribe(Disposable d) {
+
             }
 
             @Override
-            public void onNext(Object o) {
+            public void onNext(Login o) {
                 try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
@@ -83,16 +82,16 @@ public class LoginDelegate extends AppDelegate {
             }
 
             @Override
+            public void onComplete() {
+                showProgress(false);
+                getActivity().finish();
+            }
+
+            @Override
             public void onError(Throwable e) {
                 showProgress(false);
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
-            }
-
-            @Override
-            public void onComplete() {
-                showProgress(false);
-                getActivity().finish();
             }
         });
 

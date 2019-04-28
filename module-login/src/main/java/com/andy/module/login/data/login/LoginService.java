@@ -21,7 +21,7 @@ public class LoginService {
      * @param login
      * @return
      */
-    public Observable login(Login login) {
+    public Observable<Login> login(Login login) {
         return Observable.just(login).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }
