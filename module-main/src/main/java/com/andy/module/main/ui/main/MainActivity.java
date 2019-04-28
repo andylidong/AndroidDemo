@@ -17,6 +17,8 @@ import com.kymjs.themvp.presenter.ActivityPresenter;
 @Route(path = RouterActivityPath.Main.PAGER_MAIN)
 public class MainActivity extends ActivityPresenter<MainDelegate> {
 
+    private final String BUNDLE_NAME = "Home";
+
     @Override
     protected Class<MainDelegate> getDelegateClass() {
         return MainDelegate.class;
@@ -38,7 +40,7 @@ public class MainActivity extends ActivityPresenter<MainDelegate> {
     private void initData() {
         // 设置获取的跳转参数
         Bundle bundle = getIntent().getExtras();
-        viewDelegate.mTextMessage.setText(bundle.getString("Home"));
+        viewDelegate.setTitle(bundle.getString(BUNDLE_NAME));
     }
 
 }

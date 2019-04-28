@@ -5,6 +5,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.andy.module.main.R;
+import com.andy.module.main.data.main.Main;
+import com.andy.module.main.data.main.MainService;
 import com.kymjs.themvp.view.AppDelegate;
 
 /**
@@ -25,6 +27,12 @@ public class MainDelegate extends AppDelegate {
     // 判断是否点击过了
     private int lastId;
 
+    private MainService mainService;
+
+    public MainDelegate() {
+        this.mainService = new MainService();
+    }
+
     @Override
     public int getRootLayoutId() {
         return R.layout.activity_main;
@@ -35,6 +43,11 @@ public class MainDelegate extends AppDelegate {
         super.initWidget();
         mTextMessage = get(R.id.message);
         navView = get(R.id.nav_view);
+    }
+
+    protected void setTitle(String title) {
+        Main main = mainService.getTitle(title);
+        mTextMessage.setText(main.getTitle());
     }
 
     protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
