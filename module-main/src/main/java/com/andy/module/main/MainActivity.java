@@ -10,24 +10,25 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.andy.library.common.router.RouterActivityPath;
 
-@Route(path = RouterActivityPath.Home.PAGER_HOME)
+@Route(path = RouterActivityPath.Main.PAGER_MAIN)
 public class MainActivity extends AppCompatActivity {
-
     private TextView mTextMessage;
+
+    private BottomNavigationView navView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            int i = item.getItemId();
-            if (i == R.id.navigation_home) {
+            int id = item.getItemId();
+            if (id == R.id.navigation_home) {
                 mTextMessage.setText(R.string.title_home);
                 return true;
-            } else if (i == R.id.navigation_dashboard) {
+            } else if (id == R.id.navigation_dashboard) {
                 mTextMessage.setText(R.string.title_dashboard);
                 return true;
-            } else if (i == R.id.navigation_notifications) {
+            } else if (id == R.id.navigation_notifications) {
                 mTextMessage.setText(R.string.title_notifications);
                 return true;
             }
@@ -41,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mTextMessage = findViewById(R.id.message);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        navView = findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
 }

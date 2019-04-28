@@ -7,12 +7,12 @@ package com.andy.library.common.router;
 
 public class RouterActivityPath {
     /**
-     * 主业务组件
+     * 首页组件
      */
-    public static class Home {
-        private static final String HOME = "/home";
-        // 主业务界面
-        public static final String PAGER_HOME = HOME + "/Home";
+    public static class Main {
+        private static final String MAIN = "/main";
+        // 首页
+        public static final String PAGER_MAIN = MAIN + "/Main";
     }
 
     /**
