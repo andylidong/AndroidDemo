@@ -10,6 +10,16 @@ import android.widget.Button;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.andy.library.common.router.RouterActivityPath;
 
+
+/**
+ * @Description:    TODO
+ * @Author:         lidong
+ * @CreateDate:     2019-04-28 12:01
+ * @UpdateUser:     lidong
+ * @UpdateDate:     2019-04-28 12:01
+ * @UpdateRemark:   TODO
+ * @Version:        1.0
+**/
 public class AppActivity extends AppCompatActivity {
 
 

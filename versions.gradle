@@ -37,6 +37,8 @@ ext {
             // android测试和单元测试
             "runner"                 : "com.android.support.test:runner:1.0.2",
             "espresso-core"          : "com.android.support.test.espresso:espresso-core:3.0.2",
+            // MVP(含有DataBinding)
+            "themvp"                 : "com.kymjs.core:themvp:1.0.7",
     ]
 }
 

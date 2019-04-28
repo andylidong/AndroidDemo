@@ -42,6 +42,8 @@ dependencies {
     //公用资源在base中依赖
     api project(':library-resource')
 
-    //组件中依赖阿里路由编译框架
+    // 组件中依赖阿里路由编译框架
     api rootProject.ext.dependencies["arouter-api"]
+
+    api rootProject.ext.dependencies["themvp"]
 }
