@@ -45,6 +45,7 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+
     //统一资源前缀，规范资源引用
     resourcePrefix "app_"
 
