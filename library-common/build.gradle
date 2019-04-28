@@ -44,6 +44,9 @@ dependencies {
 
     // 组件中依赖阿里路由编译框架
     api rootProject.ext.dependencies["arouter-api"]
-
+    // 添加MVP框架
     api rootProject.ext.dependencies["themvp"]
+    // 添加异步
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxjava"]
 }
