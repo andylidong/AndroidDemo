@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/library-resource" />
             <option value="$PROJECT_DIR$/module-login" />
             <option value="$PROJECT_DIR$/module-main" />
+            <option value="$PROJECT_DIR$/module-react" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

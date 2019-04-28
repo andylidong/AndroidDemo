@@ -3,5 +3,6 @@
 
     <string name="login">登录</string>
     <string name="main">主页</string>
+    <string name="react">React</string>
 
 </resources>

@@ -6,6 +6,16 @@ package com.andy.library.common.router;
  */
 
 public class RouterActivityPath {
+
+    /**
+     * 登录组件
+     */
+    public static class Login {
+        private static final String LOGIN = "/login";
+        // 登录界面
+        public static final String PAGER_LOGIN = LOGIN + "/Login";
+    }
+
     /**
      * 首页组件
      */
@@ -16,12 +26,12 @@ public class RouterActivityPath {
     }
 
     /**
-     * 登录组件
+     * React组件
      */
-    public static class Login {
-        private static final String LOGIN = "/login";
-        // 登录界面
-        public static final String PAGER_LOGIN = LOGIN + "/Login";
+    public static class React {
+        private static final String REACT = "/react";
+        // React界面
+        public static final String PAGER_REACT = REACT + "/React";
     }
 
 }

@@ -1,1 +1,1 @@
-include ':app', ':library-common', ':library-resource', ':module-main', ':module-login'
+include ':app', ':library-common', ':library-resource', ':module-main', ':module-login', ':module-react'

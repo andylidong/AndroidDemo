@@ -55,6 +55,16 @@ public class AppActivity extends AppCompatActivity {
                 navigation(RouterActivityPath.Main.PAGER_MAIN, bundle);
             }
         });
+
+        Button react = findViewById(R.id.react);
+        react.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("Home", "This is a demo for Home!!!!");
+                navigation(RouterActivityPath.React.PAGER_REACT, bundle);
+            }
+        });
     }
 
 

@@ -63,10 +63,12 @@ dependencies {
     } else {
         //组件独立运行时，宿主项目直接依赖基础库，避免编译错误
         implementation project(':library-common')
-        //主业务模块
+        // 主界面
         implementation project(':module-main')
-        //身份验证模块
+        // 登录
         implementation project(':module-login')
+        // React
+        implementation project(':module-react')
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     }
 }
