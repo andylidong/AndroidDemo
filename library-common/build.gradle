@@ -38,13 +38,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //公用的support相关库在base中依赖
-    api rootProject.ext.support["design"]
-    api rootProject.ext.support["appcompat-v7"]
-    api rootProject.ext.support["junit"]
-
-    implementation rootProject.ext.dependencies["constraint-layout"]
-    implementation rootProject.ext.dependencies["support-vector-drawable"]
 
     //公用资源在base中依赖
     api project(':library-resource')

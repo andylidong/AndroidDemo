@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.andy.library.common.router.RouterActivityPath;
 
-public class MainActivity extends AppCompatActivity {
+public class AppActivity extends AppCompatActivity {
 
 
     @Override

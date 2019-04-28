@@ -31,6 +31,14 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
+    //公用的support相关库在base中依赖
+    api rootProject.ext.support["design"]
     api rootProject.ext.support["appcompat-v7"]
-    api rootProject.ext.support["junit"]
+    testImplementation rootProject.ext.support["junit"]
+
+    implementation rootProject.ext.dependencies["constraint-layout"]
+    implementation rootProject.ext.dependencies["support-vector-drawable"]
+
+    api rootProject.ext.dependencies["runner"]
+    api rootProject.ext.dependencies["espresso-core"]
 }
