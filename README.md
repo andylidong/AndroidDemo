@@ -3,14 +3,8 @@
   <table>
     <tr>
       <td><img src="./images/页-root.png"></td>
-    </tr>
-    <tr>
       <td><img src="./images/页-login.png"></td>
-    </tr>
-    <tr>
       <td><img src="./images/页-main.png"></td>
-    </tr>
-    <tr>
       <td><img src="./images/页-react.png">	</td>
     </tr>
   </table>
