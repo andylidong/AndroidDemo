@@ -43,17 +43,10 @@ android {
     }
     lintOptions {
         checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
         abortOnError false
     }
-
-    //统一资源前缀，规范资源引用
-    resourcePrefix "app_"
-
-    dataBinding {
-        enabled true
-    }
+    resourcePrefix "app_"// 统一资源前缀，规范资源引用
+    dataBinding { enabled true }
 }
 
 dependencies {

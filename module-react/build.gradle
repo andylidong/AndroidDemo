@@ -1,4 +1,4 @@
-apply from: "../module.gradle"
+apply from: "../config/module.gradle"
 
 
 android {
