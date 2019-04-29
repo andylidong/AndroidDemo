@@ -9,7 +9,7 @@
     </tr>
   </table>
 
-<b>一、为什么要做组件化</b>
+<b>一、为什么要做组件化</b><br/>
    随着业务的增长，越来越多的代码集成在同一个项目中。为了告别结构臃肿，让各个业务变得相对独立，业务组件在组件模式下可以独立开发，而在集成模式下变成arr包集成在一起，组成一个完整功能的APP。从组件化工程模型中可以看到，业务组件之间是独立的。这些组件在集成模式下是一个个library,被APP壳所依赖。在开发模式下，各个业务组件又是一个完整的APP，可以独立开发和调试。在组件开发模式下，业务组件的代码数量相比于集成模式来说少的很多，大大减少了编译的时间。
 
 
@@ -43,7 +43,7 @@
     </tr>
   </table>
 
-<b>二、组件化实施流程</b>
+<b>二、组件化实施流程</b><br/>
   <b>1）组件模式和集成模式的转换</b>
   Android Studio中的Module主要有两种属性，分别为：
     <b>application属性</b>，可以独立运行的Android程序，也就是我们的APP；
@@ -177,7 +177,7 @@
 
 但是设置了这个属性后有个问题，所有的资源名必须以指定的字符串做前缀，否则会报错，而且resourcePrefix这个值只能限定xml里面的资源，并不能限定图片资源，所有图片资源仍然需要手动去修改资源名；所以我并不推荐使用这种方法来解决资源名冲突。
 
-<b>三、业务组件架构</b>
+<b>三、业务组件架构</b><br/>
 关于什么是MVP，以及MVC、MVP、MVVM有什么区别，这类问题网上已经有很多的讲解，你可以自行搜索或看看文末的参考文章，这里就只讲讲为什么需要MVP。在Android开发中，Activity并不是一个标准的MVC模式中的Controller，它的首要职责是加载应用的布局和初始化用户界面，并接受并处理来自用户的操作请求，进而作出响应。但是，随着界面及其逻辑的复杂度不断提升，Activity类的职责不断增加，以致很容易变得庞大而臃肿。
 越小的类，bug越不容易出现，越容易调试，更容易测试，我相信这一点大家是都赞同的。在MVP模式下，View和Model是完全分离没有任何直接关联的(比如你在View层中完全不需要导Model的包，也不应该去关联它们)。
 使用MVP模式能够更方便的帮助Activity(或Fragment)职责分离，减小类体积，使项目结构更加清晰。
@@ -308,7 +308,7 @@
           }
       }
 
-<b>四、集成React Native以及优化</b>
+<b>四、集成React Native以及优化</b><br/>
   1、自己新建一个rn项目，执行react-native init RNDemo
   2、将新建的文件里面除了iOS和Android以及node_modules，全部拷贝到组件中
     例如在【module-react】中新建文件夹【react】,将拷贝的文件放在里面
@@ -384,7 +384,7 @@
 
     react-native bundle --platform android --dev false --entry-file index.js --bundle-output ../src/main/assets/index.android.bundle --assets-dest ../src/main/res/
 
-<b>五、APP问题和性能优化</b>
+<b>五、APP问题和性能优化</b><br/>
   1、我们在library模式下调用BuildConfig.DEBUG,获取到的永远都是false
      首先是在common组件中设置一个BaseApplication，主项目Application继承BaseApplication，获取变量debug,将主项目中的BuildConfig.DEBUG赋值于debug。其他的地方继承了common组件，就可以用BaseApplication.isDebug()获取到
   2、阿里矢量图来设置组件信息，将ttf为类型的文件copy到asstes中，然后写一个组件，组件继承TextView,在初始化中设置字体类型即可（仅限Android4.4以上的系统）

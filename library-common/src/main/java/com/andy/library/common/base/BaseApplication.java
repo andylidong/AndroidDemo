@@ -32,7 +32,7 @@ public class BaseApplication extends Application {
      */
     private void initRouter() {
         if (BuildConfig.DEBUG) {
-            //一定要在ARouter.init之前调用openDebug
+            // 一定要在ARouter.init之前调用openDebug
             ARouter.openDebug();
             ARouter.openLog();
         }
