@@ -1,17 +1,17 @@
 ext {
     //android开发版本配置
     android = [
-            compileSdkVersion: 27,
-            buildToolsVersion: "27.0.3",
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
             applicationId    : "com.andy",
-            minSdkVersion    : 15,
-            targetSdkVersion : 27,
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
             versionCode      : 1,
             versionName      : "1.0",
     ]
     //version配置
     versions = [
-            "support-version": "27.1.1",
+            "support-version": "28.0.0",
             "junit-version"  : "4.12",
     ]
     //support配置
@@ -46,6 +46,8 @@ ext {
             "retrofit"               : "com.squareup.retrofit2:retrofit:2.5.0",
             "converter-gson"         : "com.squareup.retrofit2:converter-gson:2.5.0",
             "adapter-rxjava"         : "com.squareup.retrofit2:adapter-rxjava:2.5.0",
+            // react native
+            "react-native"           : "com.facebook.react:react-native:+",
     ]
 }
 

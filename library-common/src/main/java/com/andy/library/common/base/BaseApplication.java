@@ -2,6 +2,7 @@ package com.andy.library.common.base;
 
 import android.app.Application;
 
+import android.content.pm.ApplicationInfo;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.andy.library.common.BuildConfig;
 
@@ -16,10 +17,14 @@ import com.andy.library.common.BuildConfig;
  * @Version: 1.0
  **/
 public class BaseApplication extends Application {
+
+    private static boolean debug = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
         initRouter();
+        initDebug();
     }
 
     /**
@@ -32,5 +37,21 @@ public class BaseApplication extends Application {
             ARouter.openLog();
         }
         ARouter.init(this);
+    }
+
+
+    /**
+     * 判断是否是开发模式
+     */
+    private void initDebug() {
+        debug = getApplicationInfo() != null && (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+    }
+
+    /**
+     * 获取运行的结果
+     * @return
+     */
+    public static boolean isDebug() {
+        return debug;
     }
 }

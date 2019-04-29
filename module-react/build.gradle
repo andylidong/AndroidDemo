@@ -1,12 +1,19 @@
 apply from: "../module.gradle"
 
+
 android {
     defaultConfig {
         //如果是独立模块，则使用当前组件的包名
         if (isBuildModule.toBoolean()) {
             applicationId "com.andy.module.react"
         }
-        vectorDrawables.useSupportLibrary = true
+        vectorDrawables.useSupportLibrary true
+        ndk { abiFilters "armeabi-v7a", "x86" }
+
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
     }
 
     // 统一资源前缀，规范资源引用
@@ -17,4 +24,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':library-common')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    api rootProject.ext.dependencies["react-native"]
+}
+
+// Run this once to be able to run the application with BUCK
+// puts all compile dependencies into folder libs for BUCK to use
+task copyDownloadableDepsToLibs(type: Copy) {
+    from configurations.compile
+    into 'libs'
 }

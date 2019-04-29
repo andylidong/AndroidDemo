@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.andy.library.common.base.BaseApplication;
 import com.andy.library.common.router.RouterActivityPath;
 import com.facebook.react.BuildConfig;
 import com.facebook.react.ReactInstanceManager;
@@ -23,22 +24,28 @@ public class ReactActivity extends AppCompatActivity implements DefaultHardwareB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 初始化界面
+        initView();
+        // 加载ReactRootView到布局中
+        setContentView(mReactRootView);
+    }
+
+    private void initView() {
+        if (mReactRootView != null) return;
         mReactRootView = new ReactRootView(this);
         mReactInstanceManager = ReactInstanceManager.builder()
                 .setApplication(getApplication())
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModulePath("index")
                 .addPackage(new MainReactPackage())
-                .setUseDeveloperSupport(true)
+                .setUseDeveloperSupport(BaseApplication.isDebug())
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
 
         //这里的AndroidRnDemoApp必须对应“index.js”中的“AppRegistry.registerComponent()”的第一个参数
         mReactRootView.startReactApplication(mReactInstanceManager, COMPONENT_NAME, null);
-
-        //加载ReactRootView到布局中
-        setContentView(mReactRootView);
     }
+
 
     @Override
     public void invokeDefaultOnBackPressed() {
