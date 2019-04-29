@@ -1,4 +1,4 @@
-package com.andy.module.react.ui.react;
+package com.andy.module.react.base;
 
 import android.app.Activity;
 import android.app.Application;

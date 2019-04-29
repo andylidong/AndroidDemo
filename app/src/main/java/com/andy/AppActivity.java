@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.andy.library.common.router.RouterActivityPath;
 
