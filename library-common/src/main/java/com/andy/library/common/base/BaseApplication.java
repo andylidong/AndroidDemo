@@ -18,7 +18,7 @@ import com.andy.library.common.BuildConfig;
  **/
 public class BaseApplication extends Application {
 
-    private static boolean debug = false;
+    protected static boolean debug = false;
 
     @Override
     public void onCreate() {

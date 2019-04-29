@@ -18,5 +18,6 @@ public class AppApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         ReactActivityHelper.getInstance().initReact(this);
+        debug = BuildConfig.DEBUG;
     }
 }
