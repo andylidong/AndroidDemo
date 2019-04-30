@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.view.KeyEvent;
+
 import com.andy.library.common.base.BaseApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
@@ -21,8 +22,6 @@ import com.facebook.react.shell.MainReactPackage;
  * @Version: 1.0
  **/
 public class ReactActivityHelper {
-
-    private final String COMPONENT_NAME = "module_react";
 
     private ReactInstanceManager mReactInstanceManager;
 
@@ -56,10 +55,10 @@ public class ReactActivityHelper {
         }
     }
 
-    protected ReactRootView getContentView(Context context) {
+    protected ReactRootView getContentView(Context context, String componentName) {
         ReactRootView mReactRootView = new ReactRootView(context);
         //这里的AndroidRnDemoApp必须对应“index.js”中的“AppRegistry.registerComponent()”的第一个参数
-        mReactRootView.startReactApplication(mReactInstanceManager, COMPONENT_NAME, null);
+        mReactRootView.startReactApplication(mReactInstanceManager, componentName, null);
         return mReactRootView;
     }
 

@@ -3,6 +3,7 @@ package com.andy.module.react.base;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+
 import com.facebook.react.ReactRootView;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 
@@ -19,11 +20,13 @@ public class BaseReactActivity extends AppCompatActivity implements DefaultHardw
 
     private ReactRootView reactRootView;
 
+    protected String componentName = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 加载ReactRootView到布局中
-        reactRootView = ReactActivityHelper.getInstance().getContentView(this);
+        reactRootView = ReactActivityHelper.getInstance().getContentView(this, componentName);
         setContentView(reactRootView);
     }
 
