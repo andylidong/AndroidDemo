@@ -46,6 +46,9 @@ ext {
             "retrofit"               : "com.squareup.retrofit2:retrofit:2.5.0",
             "converter-gson"         : "com.squareup.retrofit2:converter-gson:2.5.0",
             "adapter-rxjava"         : "com.squareup.retrofit2:adapter-rxjava:2.5.0",
+            // 针对rxjava2.x（adapter-rxjava2的版本要 >= 2.2.0）
+            "adapter-rxjava2"        : "com.squareup.retrofit2:adapter-rxjava2:2.5.0",
+
             // react native
             "react-native"           : "com.facebook.react:react-native:+",
     ]
