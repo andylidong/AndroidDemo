@@ -41,6 +41,10 @@ android {
             }
         }
     }
+    compileOptions {
+        sourceCompatibility rootProject.ext.versions["java"]
+        targetCompatibility rootProject.ext.versions["java"]
+    }
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
