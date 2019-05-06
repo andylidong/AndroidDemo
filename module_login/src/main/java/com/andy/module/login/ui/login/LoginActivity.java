@@ -1,10 +1,6 @@
 package com.andy.module.login.ui.login;
 
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.andy.library.common.router.RouterActivityPath;
