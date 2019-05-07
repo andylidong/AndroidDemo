@@ -82,6 +82,7 @@ public class ReactActivityHelper {
 
     protected void onDestroy(Activity activity, ReactRootView reactRootView) {
         if (mReactInstanceManager != null) {
+            reactRootView.unmountReactApplication();
             mReactInstanceManager.detachRootView(reactRootView);
             mReactInstanceManager.onHostDestroy(activity);
         }
