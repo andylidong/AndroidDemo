@@ -43,13 +43,6 @@ public class LoginService {
      */
     public void login(Login login) {
         loginApi = RetrofitHelper.getInstance().create(LoginApi.class);
-
-        if (checkForm(login.getEmail(), login.getPassword())) {
-            return;
-        }
-
-        showProgress(true);
-
         loginApi.getUsers()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -71,116 +64,13 @@ public class LoginService {
 
                     @Override
                     public void onComplete() {
-                        showProgress(false);
-                        loginDelegate.getActivity().finish();
+                        loginDelegate.onLoginComplete();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        showProgress(false);
-                        loginDelegate.mPasswordView.setError(getString(R.string.error_incorrect_password));
-                        loginDelegate.mPasswordView.requestFocus();
+                        loginDelegate.onLoginError(e);
                     }
                 });
-    }
-
-
-    /**
-     * 检查表单信息
-     *
-     * @param email
-     * @param password
-     * @return
-     */
-    protected boolean checkForm(String email, String password) {
-        // 清除错误提示
-        loginDelegate.mEmailView.setError(null);
-        loginDelegate.mPasswordView.setError(null);
-
-        boolean cancel = false;
-        View focusView = null;
-
-        // 检查密码
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            loginDelegate.mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = loginDelegate.mPasswordView;
-            cancel = true;
-        }
-
-        // 检查邮箱
-        if (TextUtils.isEmpty(email)) {
-            loginDelegate.mEmailView.setError(getString(R.string.error_field_required));
-            focusView = loginDelegate.mEmailView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            loginDelegate.mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = loginDelegate.mEmailView;
-            cancel = true;
-        }
-        if (cancel) {
-            focusView.requestFocus();
-        }
-        return cancel;
-    }
-
-    /**
-     * 显示进度条和显示表单
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    protected void showProgress(final boolean show) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = loginDelegate.getActivity().getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            loginDelegate.mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            loginDelegate.mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    loginDelegate.mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            loginDelegate.mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            loginDelegate.mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    loginDelegate.mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            loginDelegate.mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            loginDelegate.mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }
-
-    /**
-     * 获取资源文件String
-     *
-     * @param id
-     * @return
-     */
-    private String getString(int id) {
-        return loginDelegate.getActivity().getString(id);
-    }
-
-    /**
-     * 判断是否是邮箱
-     *
-     * @param email
-     * @return
-     */
-    private boolean isEmailValid(String email) {
-        return email.contains("@");
-    }
-
-    /**
-     * 判断密码的准确度
-     *
-     * @param password
-     * @return
-     */
-    private boolean isPasswordValid(String password) {
-        return password.length() > 4;
     }
 }
