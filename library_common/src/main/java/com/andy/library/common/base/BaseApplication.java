@@ -3,8 +3,10 @@ package com.andy.library.common.base;
 import android.app.Application;
 
 import android.content.pm.ApplicationInfo;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.andy.library.common.BuildConfig;
+import com.andy.library.common.util.ContextUtil;
 
 
 /**
@@ -25,6 +27,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         initRouter();
         initDebug();
+        ContextUtil.set(this);
     }
 
     /**
@@ -49,6 +52,7 @@ public class BaseApplication extends Application {
 
     /**
      * 获取运行的结果
+     *
      * @return
      */
     public static boolean isDebug() {

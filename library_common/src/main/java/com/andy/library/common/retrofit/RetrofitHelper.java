@@ -1,5 +1,8 @@
 package com.andy.library.common.retrofit;
 
+import com.andy.library.common.R;
+import com.andy.library.common.util.ContextUtil;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -16,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitHelper {
 
 
-    private final String BASE_URL = "http://10.1.3.155:9090/";
+    private final String BASE_URL = ContextUtil.get().getString(R.string.base_url);
 
     private static Retrofit retrofit;
 
