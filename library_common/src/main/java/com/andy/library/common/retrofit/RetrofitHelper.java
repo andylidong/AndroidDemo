@@ -2,6 +2,7 @@ package com.andy.library.common.retrofit;
 
 import com.andy.library.common.R;
 import com.andy.library.common.util.ContextUtil;
+import com.andy.library.common.util.EmptyUtil;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -28,6 +29,10 @@ public class RetrofitHelper {
         init();
     }
 
+    private RetrofitHelper(String url) {
+        init(url);
+    }
+
     private static RetrofitHelper ourInstance;
 
     public static RetrofitHelper getInstance() {
@@ -51,6 +56,14 @@ public class RetrofitHelper {
 
     private void init() {
         retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
+                // 可以接收自定义的Gson，当然也可以不传
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+    }
+
+    private void init(String url) {
+        retrofit = new Retrofit.Builder().baseUrl(EmptyUtil.isNotEmpty(url) ? url : BASE_URL)
                 // 可以接收自定义的Gson，当然也可以不传
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

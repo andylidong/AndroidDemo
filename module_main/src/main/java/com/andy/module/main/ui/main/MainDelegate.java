@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 import com.andy.module.main.R;
 import com.andy.module.main.data.main.Main;
 import com.andy.module.main.data.main.MainService;
@@ -68,6 +69,9 @@ public class MainDelegate extends AppDelegate {
                 return true;
             } else if (id == R.id.navigation_notifications) {
                 mTextMessage.setText(R.string.title_notifications);
+                return true;
+            } else if (id == R.id.navigation_setting) {
+                mTextMessage.setText(R.string.title_setting);
                 return true;
             }
             return false;
