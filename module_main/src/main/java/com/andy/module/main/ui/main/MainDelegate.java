@@ -31,6 +31,8 @@ public class MainDelegate extends AppDelegate {
 
     protected BottomNavigationViewEx navView;
 
+    protected QBadgeView qBadgeView;
+
     protected Context context;
 
     // 判断是否点击过了
@@ -67,9 +69,9 @@ public class MainDelegate extends AppDelegate {
         mTextMessage.setText(main.getTitle());
     }
 
-    protected Badge addBadgeAt(int position, int number) {
-        return new QBadgeView(context)
-                .setBadgeNumber(number)
+    protected void addBadgeAt(int position, int number) {
+        qBadgeView = new QBadgeView(context);
+        qBadgeView.setBadgeNumber(number)
                 .setGravityOffset(26, 2, true)
                 .bindTarget(navView.getBottomNavigationItemView(position))
                 .setOnDragStateChangedListener((dragState, badge, targetView) -> {
@@ -94,6 +96,7 @@ public class MainDelegate extends AppDelegate {
                 return true;
             } else if (id == R.id.navigation_notifications) {
                 mTextMessage.setText(R.string.title_notifications);
+                qBadgeView.hide(true);
                 return true;
             } else if (id == R.id.navigation_setting) {
                 mTextMessage.setText(R.string.title_setting);
