@@ -19,4 +19,5 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     // 导航栏
     implementation rootProject.ext.dependencies["BottomNavigationViewEx"]
+    implementation rootProject.ext.dependencies["badgeview"]
 }

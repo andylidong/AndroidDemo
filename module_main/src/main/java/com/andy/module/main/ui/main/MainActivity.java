@@ -19,6 +19,10 @@ public class MainActivity extends ActivityPresenter<MainDelegate> {
 
     private final String BUNDLE_NAME = "Home";
 
+    public MainActivity() {
+        viewDelegate.context = this;
+    }
+
     @Override
     protected Class<MainDelegate> getDelegateClass() {
         return MainDelegate.class;

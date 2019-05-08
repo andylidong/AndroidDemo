@@ -1,14 +1,20 @@
 package com.andy.module.main.ui.main;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.andy.module.main.R;
 import com.andy.module.main.data.main.Main;
 import com.andy.module.main.data.main.MainService;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.kymjs.themvp.view.AppDelegate;
+
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
 
 /**
  * @Description: TODO
@@ -24,6 +30,8 @@ public class MainDelegate extends AppDelegate {
     protected TextView mTextMessage;
 
     protected BottomNavigationViewEx navView;
+
+    protected Context context;
 
     // 判断是否点击过了
     private int lastId;
@@ -43,17 +51,29 @@ public class MainDelegate extends AppDelegate {
     public void initWidget() {
         super.initWidget();
         mTextMessage = get(R.id.message);
+        // 设置底部导航栏
         navView = get(R.id.nav_view);
         navView.enableAnimation(false);
         navView.enableShiftingMode(false);
         navView.enableItemShiftingMode(false);
         navView.setIconSize(26, 26);
         navView.setTextSize(10);
+        // 模拟注释
+        addBadgeAt(2, 4);
     }
 
     protected void setTitle(String title) {
         Main main = mainService.getTitle(title);
         mTextMessage.setText(main.getTitle());
+    }
+
+    protected Badge addBadgeAt(int position, int number) {
+        return new QBadgeView(context)
+                .setBadgeNumber(number)
+                .setGravityOffset(26, 2, true)
+                .bindTarget(navView.getBottomNavigationItemView(position))
+                .setOnDragStateChangedListener((dragState, badge, targetView) -> {
+                });
     }
 
     protected BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
