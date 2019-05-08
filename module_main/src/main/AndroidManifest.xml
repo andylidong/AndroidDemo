@@ -4,6 +4,7 @@
 
     <application>
         <activity
+            android:launchMode="singleTask"
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme"></activity>
