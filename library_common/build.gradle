@@ -23,4 +23,5 @@ dependencies {
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["adapter-rxjava"]
     api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["logging-interceptor"]
 }

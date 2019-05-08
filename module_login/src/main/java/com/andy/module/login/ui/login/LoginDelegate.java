@@ -10,10 +10,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.andy.library.common.retrofit.OnSuccessAndFaultListener;
+import com.andy.library.common.retrofit.OnSuccessAndFaultSub;
 import com.andy.module.login.R;
 import com.andy.module.login.data.login.Login;
 import com.andy.module.login.data.login.LoginService;
 import com.kymjs.themvp.view.AppDelegate;
+
 
 /**
  * @Description: TODO
@@ -37,7 +40,7 @@ public class LoginDelegate extends AppDelegate {
     private LoginService loginService;
 
     public LoginDelegate() {
-        loginService = new LoginService(this);
+        loginService = new LoginService();
     }
 
     @Override
@@ -66,19 +69,19 @@ public class LoginDelegate extends AppDelegate {
             return;
         }
         showProgress(true);
-        loginService.login(login);
-    }
+        loginService.login(login, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener<Object>() {
+            @Override
+            public void onSuccess(Object result) {
+                showProgress(false);
+                getActivity().finish();
+            }
 
-    public void onLoginComplete() {
-        showProgress(false);
-        getActivity().finish();
-    }
-
-
-    public void onLoginError(Throwable e) {
-        showProgress(false);
-        mPasswordView.setError(getString(R.string.error_incorrect_password));
-        mPasswordView.requestFocus();
+            @Override
+            public void onError(String errorMsg) {
+                System.out.println(errorMsg);
+                showProgress(false);
+            }
+        }));
     }
 
     /**

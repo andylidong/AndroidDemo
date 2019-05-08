@@ -5,7 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.view.KeyEvent;
 
-import com.andy.library.common.base.BaseApplication;
+import com.andy.library.common.util.ConstantUtil;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
@@ -48,7 +48,7 @@ public class ReactActivityHelper {
                     .setBundleAssetName("index.android.bundle")
                     .setJSMainModulePath("index")
                     .addPackage(new MainReactPackage())
-                    .setUseDeveloperSupport(BaseApplication.isDebug())
+                    .setUseDeveloperSupport(ConstantUtil.getIsDebug())
                     .setInitialLifecycleState(LifecycleState.BEFORE_CREATE)
                     .build();
             mReactInstanceManager.createReactContextInBackground();

@@ -36,44 +36,28 @@ public class AppActivity extends AppCompatActivity {
         checkAppPermission();
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
 
 
         Button login = findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigation(RouterActivityPath.Login.PAGER_LOGIN, null);
-            }
-        });
+        login.setOnClickListener(v -> navigation(RouterActivityPath.Login.PAGER_LOGIN, null));
 
         Button home = findViewById(R.id.home);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("Home", "This is a demo for Home!!!!");
-                navigation(RouterActivityPath.Main.PAGER_MAIN, bundle);
-            }
+        home.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("Home", "This is a demo for Home!!!!");
+            navigation(RouterActivityPath.Main.PAGER_MAIN, bundle);
         });
 
         Button react = findViewById(R.id.react);
-        react.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!isAllowed) {
-                    return;
-                }
-                Bundle bundle = new Bundle();
-                bundle.putString("react", "This is a demo for Home!!!!");
-                navigation(RouterActivityPath.React.PAGER_REACT, bundle);
+        react.setOnClickListener(v -> {
+            if (!isAllowed) {
+                return;
             }
+            Bundle bundle = new Bundle();
+            bundle.putString("react", "This is a demo for Home!!!!");
+            navigation(RouterActivityPath.React.PAGER_REACT, bundle);
         });
     }
 

@@ -1,6 +1,7 @@
 package com.andy;
 
 import com.andy.library.common.base.BaseApplication;
+import com.andy.library.common.util.ConstantUtil;
 import com.andy.module.react.base.ReactActivityHelper;
 
 /**
@@ -14,10 +15,15 @@ import com.andy.module.react.base.ReactActivityHelper;
  **/
 public class AppApplication extends BaseApplication {
 
+    public AppApplication() {
+        super();
+        debug = BuildConfig.DEBUG;
+        ConstantUtil.setIsDebug(BuildConfig.DEBUG);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         ReactActivityHelper.getInstance().initReact(this);
-        debug = BuildConfig.DEBUG;
     }
 }
