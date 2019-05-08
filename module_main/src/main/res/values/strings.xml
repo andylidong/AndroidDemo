@@ -2,8 +2,8 @@
     <string name="app_name">module-main</string>
     <string name="title_activity_main">Home</string>
 
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_setting">Setting</string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">工作</string>
+    <string name="title_notifications">通知</string>
+    <string name="title_setting">设置</string>
 </resources>

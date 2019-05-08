@@ -53,6 +53,8 @@ ext {
             "adapter-rxjava2"        : "com.squareup.retrofit2:adapter-rxjava2:2.5.0",
             // react native
             "react-native"           : "com.facebook.react:react-native:+",
+            // 底部导航栏
+            "BottomNavigationViewEx" : "com.github.ittianyu:BottomNavigationViewEx:2.0.4",
     ]
 }
 

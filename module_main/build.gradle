@@ -17,4 +17,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':library_common')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    // 导航栏
+    implementation rootProject.ext.dependencies["BottomNavigationViewEx"]
 }

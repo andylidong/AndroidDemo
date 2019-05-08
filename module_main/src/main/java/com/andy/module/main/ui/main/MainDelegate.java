@@ -1,13 +1,13 @@
 package com.andy.module.main.ui.main;
 
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.andy.module.main.R;
 import com.andy.module.main.data.main.Main;
 import com.andy.module.main.data.main.MainService;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.kymjs.themvp.view.AppDelegate;
 
 /**
@@ -23,7 +23,7 @@ public class MainDelegate extends AppDelegate {
 
     protected TextView mTextMessage;
 
-    protected BottomNavigationView navView;
+    protected BottomNavigationViewEx navView;
 
     // 判断是否点击过了
     private int lastId;
@@ -44,6 +44,11 @@ public class MainDelegate extends AppDelegate {
         super.initWidget();
         mTextMessage = get(R.id.message);
         navView = get(R.id.nav_view);
+        navView.enableAnimation(false);
+        navView.enableShiftingMode(false);
+        navView.enableItemShiftingMode(false);
+        navView.setIconSize(26, 26);
+        navView.setTextSize(10);
     }
 
     protected void setTitle(String title) {
@@ -51,8 +56,8 @@ public class MainDelegate extends AppDelegate {
         mTextMessage.setText(main.getTitle());
     }
 
-    protected BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+    protected BottomNavigationViewEx.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationViewEx.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
