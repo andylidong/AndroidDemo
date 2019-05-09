@@ -7,10 +7,14 @@ import android.view.KeyEvent;
 
 import com.andy.library.common.util.ConstantUtil;
 import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.facebook.react.shell.MainReactPackage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Description: TODO
@@ -24,6 +28,8 @@ import com.facebook.react.shell.MainReactPackage;
 public class ReactActivityHelper {
 
     private ReactInstanceManager mReactInstanceManager;
+
+    private List<ReactPackage> reactPackageList = new ArrayList<>();
 
     private ReactActivityHelper() {
     }
@@ -43,11 +49,13 @@ public class ReactActivityHelper {
 
     public void initReact(Application application) {
         if (mReactInstanceManager == null) {
+            reactPackageList.add(new MainReactPackage());
+            reactPackageList.add(new BaseReactPackage());
             mReactInstanceManager = ReactInstanceManager.builder()
                     .setApplication(application)
                     .setBundleAssetName("index.android.bundle")
                     .setJSMainModulePath("index")
-                    .addPackage(new MainReactPackage())
+                    .addPackages(reactPackageList)
                     .setUseDeveloperSupport(ConstantUtil.getIsDebug())
                     .setInitialLifecycleState(LifecycleState.BEFORE_CREATE)
                     .build();
