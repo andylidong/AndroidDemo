@@ -100,7 +100,6 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
                 ImgMark.postDelayed(() -> {
                     startActivity(new Intent(SplashActivity.this, AppActivity.class));
                     SplashActivity.this.finish();
