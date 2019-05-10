@@ -1,7 +1,10 @@
 package com.andy.module.react.base;
 
+import android.widget.Toast;
+
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
 
 import javax.annotation.Nonnull;
 
@@ -16,8 +19,11 @@ import javax.annotation.Nonnull;
  **/
 public class BaseReactModule extends ReactContextBaseJavaModule {
 
+    private ReactApplicationContext reactContext;
+
     public BaseReactModule(@Nonnull ReactApplicationContext reactContext) {
         super(reactContext);
+        this.reactContext = reactContext;
     }
 
     @Nonnull
@@ -30,5 +36,11 @@ public class BaseReactModule extends ReactContextBaseJavaModule {
     @Override
     public boolean canOverrideExistingModule() {
         return true;
+    }
+
+
+    @ReactMethod()
+    public void toast(String content) {
+        Toast.makeText(reactContext, content, Toast.LENGTH_SHORT).show();
     }
 }

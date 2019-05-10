@@ -7,9 +7,14 @@
  */
 
 import React, { Component } from 'react';
-import { DeviceEventEmitter, StyleSheet, Text, View } from 'react-native';
+import { NativeModules, DeviceEventEmitter, StyleSheet, Text, View } from 'react-native';
+
+
+const BaseReactModule = NativeModules.BaseReactModule;
 
 export default class App extends Component {
+
+  listener;
 
   constructor(props) {
     super(props);
@@ -19,11 +24,14 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    DeviceEventEmitter.addListener("react", (data) => this.renderTitle(data));
+    BaseReactModule.toast("This is a demo for test!!!");
+    this.listener = DeviceEventEmitter.addListener("react", (data) => this.renderTitle(data));
   }
 
   componentWillUnmount() {
-    DeviceEventEmitter.removeListener("react", (data) => this.renderTitle(data));
+    if (this.listener) {
+      // DeviceEventEmitter.removeListener("react", (data) => this.renderTitle(data));
+    }
   }
 
   renderTitle = (data) => {
