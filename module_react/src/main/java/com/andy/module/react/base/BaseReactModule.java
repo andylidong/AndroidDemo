@@ -1,6 +1,5 @@
 package com.andy.module.react.base;
 
-import com.andy.module.react.util.EventUtil;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 
@@ -19,12 +18,17 @@ public class BaseReactModule extends ReactContextBaseJavaModule {
 
     public BaseReactModule(@Nonnull ReactApplicationContext reactContext) {
         super(reactContext);
-        EventUtil.init(reactContext);
     }
 
     @Nonnull
     @Override
     public String getName() {
         return "BaseReactModule";
+    }
+
+
+    @Override
+    public boolean canOverrideExistingModule() {
+        return true;
     }
 }

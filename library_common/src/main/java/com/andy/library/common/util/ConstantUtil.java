@@ -13,13 +13,19 @@ import android.content.Context;
  **/
 public class ConstantUtil {
 
-    // 获取上下文资源
+    /**
+     * 获取上下文资源
+     */
     private static Context context;
 
-    // 获取判断是否是debug
+    /**
+     * 获取判断是否是debug
+     */
     private static Boolean isDebug = false;
 
-    // 获取token
+    /**
+     * 获取token
+     */
     private static String token = "";
 
     public static void setContext(Context context) {

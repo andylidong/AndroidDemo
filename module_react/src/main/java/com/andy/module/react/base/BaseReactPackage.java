@@ -1,5 +1,6 @@
 package com.andy.module.react.base;
 
+import com.andy.module.react.util.EventUtil;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -27,6 +28,7 @@ public class BaseReactPackage implements ReactPackage {
     @Nonnull
     @Override
     public List<NativeModule> createNativeModules(@Nonnull ReactApplicationContext reactContext) {
+        EventUtil.init(reactContext);
         nativeModuleList.add(new BaseReactModule(reactContext));
         return nativeModuleList;
     }
