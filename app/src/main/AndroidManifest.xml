@@ -14,7 +14,9 @@
         tools:replace="android:name">
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_splash"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_app"
+            android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,8 +1,10 @@
 package com.andy;
 
 import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -40,16 +42,15 @@ public class SplashActivity extends AppCompatActivity {
     };
 
     @Override
+    @SuppressLint("ResourceAsColor")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        getWindow().setBackgroundDrawable(null);
         initStatus();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         img = findViewById(R.id.img_id);
         ImgMark = findViewById(R.id.icon_mark);
         ImgMark.post(() -> {
-            Glide.with(SplashActivity.this).load(R.drawable.splash)
-                    .animate(animator).into(img);
+            Glide.with(this).load(R.drawable.splash).animate(animator).into(img);
             startAnimate();
         });
     }
@@ -58,9 +59,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-
     }
 
+    /**
+     * 初始化状态栏
+     */
     private void initStatus() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             View decoderView = getWindow().getDecorView();
@@ -73,21 +76,23 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 开始动画
+     */
     private void startAnimate() {
         int imgHeight = ImgMark.getHeight() / 5;
         int height = getWindowManager().getDefaultDisplay().getHeight();
         int dy = (height - imgHeight) / 2;
         AnimatorSet set = new AnimatorSet();
         ObjectAnimator animatorTranslate = ObjectAnimator.ofFloat(ImgMark, "translationY", 0, dy);
-        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(ImgMark, "ScaleX", 1f, 0.2f);
-        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(ImgMark, "ScaleY", 1f, 0.2f);
+        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(ImgMark, "ScaleX", 1f, 0f);
+        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(ImgMark, "ScaleY", 1f, 0f);
         ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(ImgMark, "alpha", 1f, 0.5f);
-        set.play(animatorTranslate)
-                .with(animatorScaleX).with(animatorScaleY).with(animatorAlpha);
-        set.setDuration(1200);
+        set.play(animatorTranslate).with(animatorScaleX).with(animatorScaleY).with(animatorAlpha);
+        set.setDuration(3000);
         set.setInterpolator(new AccelerateInterpolator());
         set.start();
-        set.addListener(new Animator.AnimatorListener() {
+        set.addListener(new AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
 
@@ -99,7 +104,7 @@ public class SplashActivity extends AppCompatActivity {
                 ImgMark.postDelayed(() -> {
                     startActivity(new Intent(SplashActivity.this, AppActivity.class));
                     SplashActivity.this.finish();
-                }, 3000);
+                }, 0);
             }
 
             @Override
