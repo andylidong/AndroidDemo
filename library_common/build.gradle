@@ -24,4 +24,6 @@ dependencies {
     api rootProject.ext.dependencies["adapter-rxjava"]
     api rootProject.ext.dependencies["adapter-rxjava2"]
     api rootProject.ext.dependencies["logging-interceptor"]
+    //  添加图片
+    api rootProject.ext.dependencies["glide"]
 }

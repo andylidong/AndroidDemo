@@ -70,4 +70,5 @@ dependencies {
         implementation project(':module_react')
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     }
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
