@@ -141,7 +141,8 @@ public class RetrofitFactory {
         // 创建对象信息
         retrofit = new Retrofit.Builder()
                 .client(okHttpBuilder.build())
-                .addConverterFactory(GsonConverterFactory.create())//json转换成JavaBean
+                //json转换成JavaBean
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
@@ -166,7 +167,8 @@ public class RetrofitFactory {
         o.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .retry(RETRY_COUNT)//请求失败重连次数
+                //请求失败重连次数
+                .retry(RETRY_COUNT)
                 .subscribe(s);
 
     }
