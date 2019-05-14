@@ -30,8 +30,8 @@ import com.bumptech.glide.request.animation.ViewPropertyAnimation;
  **/
 public class SplashActivity extends AppCompatActivity {
 
-    private ImageView img;
-    private ImageView ImgMark;
+    private ImageView flashImage;
+    private ImageView markImage;
 
 
     ViewPropertyAnimation.Animator animator = view -> {
@@ -47,10 +47,10 @@ public class SplashActivity extends AppCompatActivity {
         initStatus();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        img = findViewById(R.id.img_id);
-        ImgMark = findViewById(R.id.icon_mark);
-        ImgMark.post(() -> {
-            Glide.with(this).load(R.drawable.splash).animate(animator).into(img);
+        flashImage = findViewById(R.id.img_id);
+        markImage = findViewById(R.id.icon_mark);
+        markImage.post(() -> {
+            Glide.with(this).load(R.drawable.splash).animate(animator).into(flashImage);
             startAnimate();
         });
     }
@@ -80,14 +80,14 @@ public class SplashActivity extends AppCompatActivity {
      * 开始动画
      */
     private void startAnimate() {
-        int imgHeight = ImgMark.getHeight() / 5;
+        int imgHeight = markImage.getHeight() / 5;
         int height = getWindowManager().getDefaultDisplay().getHeight();
         int dy = (height - imgHeight) / 2;
         AnimatorSet set = new AnimatorSet();
-        ObjectAnimator animatorTranslate = ObjectAnimator.ofFloat(ImgMark, "translationY", 0, dy);
-        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(ImgMark, "ScaleX", 1f, 0f);
-        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(ImgMark, "ScaleY", 1f, 0f);
-        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(ImgMark, "alpha", 1f, 0.5f);
+        ObjectAnimator animatorTranslate = ObjectAnimator.ofFloat(markImage, "translationY", 0, dy);
+        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(markImage, "ScaleX", 1f, 0f);
+        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(markImage, "ScaleY", 1f, 0f);
+        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(markImage, "alpha", 1f, 0.5f);
         set.play(animatorTranslate).with(animatorScaleX).with(animatorScaleY).with(animatorAlpha);
         set.setDuration(3000);
         set.setInterpolator(new AccelerateInterpolator());
@@ -100,7 +100,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                ImgMark.postDelayed(() -> {
+                markImage.postDelayed(() -> {
                     startActivity(new Intent(SplashActivity.this, AppActivity.class));
                     SplashActivity.this.finish();
                 }, 0);
