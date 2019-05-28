@@ -87,7 +87,7 @@ public class SplashActivity extends AppCompatActivity {
         ObjectAnimator animatorTranslate = ObjectAnimator.ofFloat(markImage, "translationY", 0, dy);
         ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(markImage, "ScaleX", 1f, 0f);
         ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(markImage, "ScaleY", 1f, 0f);
-        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(markImage, "alpha", 1f, 0.5f);
+        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(markImage, "alpha", 1f, 0f);
         set.play(animatorTranslate).with(animatorScaleX).with(animatorScaleY).with(animatorAlpha);
         set.setDuration(3000);
         set.setInterpolator(new AccelerateInterpolator());
