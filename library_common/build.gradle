@@ -17,15 +17,20 @@ dependencies {
     api rootProject.ext.dependencies["themvp"]
     // 添加异步
     api rootProject.ext.dependencies["rxandroid"]
-    api rootProject.ext.dependencies["rxjava"]
+    api(rootProject.ext.dependencies["rxjava"]){
+        //当项目有多个dubbo包依赖时，我们可以在父项目强制统一版本号为2.6.5:
+        force = true
+    }
     // 添加网络
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["converter-gson"]
     api rootProject.ext.dependencies["adapter-rxjava"]
     api rootProject.ext.dependencies["adapter-rxjava2"]
     api rootProject.ext.dependencies["logging-interceptor"]
-    //  添加图片
+    // 添加图片
     api rootProject.ext.dependencies["glide"]
-    //
+    // recyclerview
     api rootProject.ext.dependencies["recyclerview"]
+    // eventbus
+    api rootProject.ext.dependencies["eventbus"]
 }
